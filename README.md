@@ -9,6 +9,7 @@ This project was built on purpose to learn CRUD API using [AdonisJS](https://ado
 ## Install & run
 - Clone project `https://github.com/Qitaal/Pet-API.git`
 - Install dependencies `npm install`
+- Create & configure `.env` file
 - Migrate database schema `node ace migration:run`
 - Run server `npm run dev`
 
