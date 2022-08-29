@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon';
 import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm';
-import Owner from './Owner';
+import User from './User';
 
 export default class Pet extends BaseModel {
   @column({ isPrimary: true })
@@ -19,7 +19,7 @@ export default class Pet extends BaseModel {
   public note: string;
 
   @column()
-  public owner_id: number;
+  public user_id: number;
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime;
@@ -27,8 +27,14 @@ export default class Pet extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime;
 
-  @belongsTo(() => Owner, {
-    localKey: 'owner_id',
+  @belongsTo(() => User, {
+    localKey: 'user_id',
   })
-  public owner: BelongsTo<typeof Owner>;
+  public user: BelongsTo<typeof User>;
+
+  @column()
+  public is_deleted: boolean;
+
+  @column()
+  public gender: string;
 }
